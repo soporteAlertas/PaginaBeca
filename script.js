@@ -51,16 +51,49 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /**
-   * 3. Manejo del envío del formulario
+   * Función auxiliar para enviar eventos a Google Analytics 4 (GA4)
+   * Importante: Por políticas de privacidad de Google, nunca se deben enviar
+   * contraseñas ni datos identificables directos (PII) sin procesar.
    */
+  function trackAnalyticsEvent(eventName, eventParams = {}) {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, eventParams);
+      console.log(`[Google Analytics] Evento enviado: "${eventName}"`, eventParams);
+    } else {
+      console.warn('[Google Analytics] La función gtag() no está disponible.');
+    }
+  }
+
+  /**
+   * 3. Manejo del envío del formulario y clic en el botón
+   */
+  if (submitBtn) {
+    submitBtn.addEventListener('click', () => {
+      // Registra el clic directo en el botón de inicio de sesión
+      trackAnalyticsEvent('click_boton_login', {
+        button_id: 'submit-btn',
+        button_text: 'Iniciar Sesión'
+      });
+    });
+  }
+
   loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    // Evento de intento de inicio de sesión
+    trackAnalyticsEvent('login_attempt', {
+      form_id: 'login-form'
+    });
 
     const isEmailValid = validateEmail();
     const isPasswordValid = validatePassword();
 
     // Si hay errores, sacudir la tarjeta y enfocar el primer campo con error
     if (!isEmailValid || !isPasswordValid) {
+      trackAnalyticsEvent('login_validation_failed', {
+        error_field: !isEmailValid ? 'email' : 'password'
+      });
+
       triggerShakeAnimation();
       if (!isEmailValid) {
         emailInput.focus();
@@ -181,6 +214,13 @@ document.addEventListener('DOMContentLoaded', () => {
       emailInput.disabled = false;
       passwordInput.disabled = false;
 
+      // Registrar evento estándar 'login' en Google Analytics 4
+      const rememberMe = document.getElementById('remember-me')?.checked || false;
+      trackAnalyticsEvent('login', {
+        method: 'Email and Password',
+        remember_me: rememberMe
+      });
+
       // Mensaje de éxito
       showStatusMessage(`¡Bienvenido de nuevo! Sesión iniciada con éxito.`, 'success');
 
@@ -195,6 +235,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (forgotLink) {
     forgotLink.addEventListener('click', (e) => {
       e.preventDefault();
+      trackAnalyticsEvent('click_recuperar_password', {
+        link_text: '¿Olvidaste tu contraseña?'
+      });
       showStatusMessage('Se ha enviado un enlace de recuperación a tu bandeja de entrada si la cuenta existe.', 'success');
     });
   }
