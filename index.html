@@ -91,17 +91,16 @@
             font-weight: bold;
         }
     </style>
-</head>
-<title>Login false</title>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZC0MXH236"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+    <title>Login false</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZC0MXH236"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'G-3ZC0MXH236');
-</script>
+        gtag('config', 'G-3ZC0MXH236');
+    </script>
 </head>
 
 <body>
@@ -112,7 +111,7 @@
 
         <h1>¿Quiere continuar con el inicio de sesión?</h1>
         <div class="link-card">
-            <a href="#ventana">Ingresar</a>
+            <a href="#ventana" id="btn-ingresar">Ingresar</a>
         </div>
 
     </div>
@@ -124,6 +123,16 @@
             <a href="#" class="cerrar">cerrar</a>
         </div>
     </div>
+
+    <script>
+        document.getElementById('btn-ingresar').addEventListener('click', function () {
+            gtag('event', 'click_ingresar', {
+                'event_category': 'simulacion_phishing',
+                'event_label': 'Boton Ingresar',
+                'tipo_evento': 'clic_enlace_falso'
+            });
+        });
+    </script>
 </body>
 
 </html>
