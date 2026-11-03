@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S7FEQMKF1S"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-S7FEQMKF1S');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <style>
+    <title>Login false</title>
+    <style>
 
 body{
     background-image: url(imagenes/TRAMA_3.jpg) !important; 
@@ -91,28 +102,41 @@ img{
     font-weight: bold;
 }
     </style>
-    </head>
-    <title>Login false</title>
-    </head>
-    <body>
-        <img class="icon" src="imagenes\usuario.png" alt="icon-usuario">
-        <div class="card" id="login">
-            <img src="imagenes\unam_0.png" alt="logo-unam">
-            <img src="imagenes\posgrado-unam.png" alt="logo-posgrado">
-            
-                <h1>¿Quiere continuar con el inicio de sesión?</h1>
-                <div class="link-card">
-                <a href="#ventana">Ingresar</a>
-                </div>
-            
+</head>
+<body>
+    <img class="icon" src="imagenes\usuario.png" alt="icon-usuario">
+    <div class="card" id="login">
+        <img src="imagenes\unam_0.png" alt="logo-unam">
+        <img src="imagenes\posgrado-unam.png" alt="logo-posgrado">
+        
+        <h1>¿Quiere continuar con el inicio de sesión?</h1>
+        <div class="link-card">
+            <a href="#ventana" id="btn-ingresar">Ingresar</a>
         </div>
-        <div id="ventana" class="modal">
-            <div class="modal-content">
+        
+    </div>
+    <div id="ventana" class="modal">
+        <div class="modal-content">
             <h2>¡Felicidades caiste! </h2>
-            <p> Haz caido en un phishing ten más cuidado para la proxima
-            </p>
+            <p> Haz caido en un phishing ten más cuidado para la proxima</p>
             <a href="#" class="cerrar">cerrar</a>
-            </div>
         </div>
-    </body>
+    </div>
+
+    <!-- Script para monitorear clics en el botón Ingresar -->
+    <script>
+        const btnIngresar = document.getElementById('btn-ingresar');
+
+        if (btnIngresar) {
+            btnIngresar.addEventListener('click', function () {
+                // Envía el evento de clic a Google Analytics
+                gtag('event', 'click_ingresar', {
+                    'event_category': 'simulacion_phishing',
+                    'event_label': 'Boton Ingresar'
+                });
+                console.log('Clic registrado en Google Analytics: click_ingresar');
+            });
+        }
+    </script>
+</body>
 </html>
