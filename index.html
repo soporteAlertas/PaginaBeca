@@ -1,138 +1,118 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            background-image: url(imagenes/TRAMA_3.jpg) !important;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            height: 100vh;
-            margin: 0;
-        }
+       <style>
 
-        .card {
-            background-color: white;
-            max-width: 400px;
-            padding: 40px;
-            margin: 0 auto;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 4px 8px gray;
-        }
+body{
+    background-image: url(imagenes/TRAMA_3.jpg) !important; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+}
 
-        img {
-            width: 30%;
-            display: inline-block;
-            align-items: center;
-            justify-content: center;
-            padding: auto;
-        }
+.card{
+  background-color: white;
+  max-width: 400px;
+  padding: 40px;
+  margin: 0 auto;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px gray;
+}
 
-        .link-card a {
-            text-decoration: none;
-            padding: 10px 20px;
-            background-color: #17436B;
-            color: white;
-            font-size: 1.2rem;
-            border-radius: 8px;
-            transition: background-color 0.3s ease;
-        }
+img{
+    width: 30%;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    padding: auto;
+}
 
-        .link-card a:hover {
-            background-color: #D39A18;
-        }
+.link-card a{
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #17436B;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
 
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #17436B;
-            color: #D39A18;
-            font-family: Arial, Helvetica, sans-serif;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
+.link-card a:hover{
+    background-color: #D39A18;
+}
 
-        .modal:target {
-            display: flex;
-        }
+.modal{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #17436B;
+    color: #D39A18;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
 
-        .modal-content {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            width: 800px;
-            height: 400px;
-            font-size: 3rem;
-        }
+.modal:target{
+    display: flex;
+}
 
-        .icon {
-            width: 200px;
-            height: auto;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
+.modal-content{
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 800px;
+    height: 400px;
+    font-size: 3rem;
+}
 
-        .cerrar {
-            display: inline-block;
-            margin-top: 15px;
-            text-decoration: none;
-            color: #D39A18;
-            font-weight: bold;
-        }
+.icon{
+    width: 200px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cerrar{
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #D39A18;
+    font-weight: bold;
+}
     </style>
+    </head>
     <title>Login false</title>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZC0MXH236"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-3ZC0MXH236');
-    </script>
-</head>
-
-<body>
-    <img class="icon" src="imagenes\usuario.png" alt="icon-usuario">
-    <div class="card" id="login">
-        <img src="imagenes\unam_0.png" alt="logo-unam">
-        <img src="imagenes\posgrado-unam.png" alt="logo-posgrado">
-
-        <h1>¿Quiere continuar con el inicio de sesión?</h1>
-        <div class="link-card">
-            <a href="#ventana" id="btn-ingresar">Ingresar</a>
+    </head>
+    <body>
+        <img class="icon" src="imagenes\usuario.png" alt="icon-usuario">
+        <div class="card" id="login">
+            <img src="imagenes\unam_0.png" alt="logo-unam">
+            <img src="imagenes\posgrado-unam.png" alt="logo-posgrado">
+            
+                <h1>¿Quiere continuar con el inicio de sesión?</h1>
+                <div class="link-card">
+                <a href="#ventana">Ingresar</a>
+                </div>
+            
         </div>
-
-    </div>
-    <div id="ventana" class="modal">
-        <div class="modal-content">
+        <div id="ventana" class="modal">
+            <div class="modal-content">
             <h2>¡Felicidades caiste! </h2>
             <p> Haz caido en un phishing ten más cuidado para la proxima
             </p>
             <a href="#" class="cerrar">cerrar</a>
+            </div>
         </div>
-    </div>
-
-    <script>
-        document.getElementById('btn-ingresar').addEventListener('click', function () {
-            gtag('event', 'click_ingresar', {
-                'event_category': 'simulacion_phishing',
-                'event_label': 'Boton Ingresar',
-                'tipo_evento': 'clic_enlace_falso'
-            });
-        });
-    </script>
-</body>
-
+    </body>
 </html>
